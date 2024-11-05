@@ -1,7 +1,7 @@
 public class BinaryTree {
     private Node raiz;
 
-    //* inserir */
+    //* Inserir */
     public void inserir(int elemento) {
         this.inserir(this.raiz, elemento);
     }
@@ -26,7 +26,7 @@ public class BinaryTree {
         }
     }
 
-    //* encaminhamentos */
+    //* Encaminhamentos */
     //raiz -> esquerda -> direita
     public void preOrder() {
         this.preOrder(this.raiz);
@@ -67,7 +67,24 @@ public class BinaryTree {
     }
 
     //* Pegar o maior número */
-    public int maiorNumero() {}
+    public int getMaiorNumero() {
+        Node aux = this.raiz;
+        while (aux.getDireita() != null) {
+            aux = aux.getDireita();
+        }
+
+        return aux.getElemento();
+    }
 
     //* Remover o menor número */
+    public int removerMenorNumero() {
+        Node aux = this.raiz;
+        while (aux.getEsquerda().getEsquerda() != null) {
+            aux = aux.getEsquerda();
+        }
+
+        int num = aux.getEsquerda().getElemento();
+        aux.setEsquerda(null);
+        return num;
+    }
 }
