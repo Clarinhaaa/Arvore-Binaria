@@ -17,10 +17,13 @@ public class Main {
         bt.inOrder();
         System.out.println();
         bt.postOrder();
+
+        System.out.println();
         System.out.println();
 
-        //* Pegar o maior número e remover o menor */
+        //* Pegar o maior e menor número e remover o menor */
         System.out.println("Maior número da árvore: " + bt.getMaiorNumero());
+        System.out.println("Menor número da árvore: " + bt.getMenorNumero());
         System.out.println("Menor número da árvore removido: " + bt.removerMenorNumero());
 
         //* Imprimir depois das mudanças */

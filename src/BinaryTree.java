@@ -76,6 +76,16 @@ public class BinaryTree {
         return aux.getElemento();
     }
 
+    //* Pegar o menor número */
+    public int getMenorNumero() {
+        Node aux = this.raiz;
+        while (aux.getEsquerda() != null) {
+            aux = aux.getEsquerda();
+        }
+
+        return aux.getElemento();
+    }
+
     //* Remover o menor número */
     public int removerMenorNumero() {
         Node aux = this.raiz;
