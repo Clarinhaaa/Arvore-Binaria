@@ -68,33 +68,64 @@ public class BinaryTree {
 
     //* Pegar o maior número */
     public int getMaiorNumero() {
-        Node aux = this.raiz;
+        return this.getMaiorNumero(this.raiz).getElemento();
+    }
+    
+    private Node getMaiorNumero(Node node) {
+        Node aux = node;
         while (aux.getDireita() != null) {
             aux = aux.getDireita();
         }
 
-        return aux.getElemento();
+        return aux;
     }
 
     //* Pegar o menor número */
     public int getMenorNumero() {
-        Node aux = this.raiz;
+        return this.getMenorNumero(this.raiz).getElemento();
+    }
+
+    private Node getMenorNumero(Node node) {
+        Node aux = node;
         while (aux.getEsquerda() != null) {
             aux = aux.getEsquerda();
         }
 
-        return aux.getElemento();
+        return aux;
     }
 
     //* Remover o menor número */
     public int removerMenorNumero() {
-        Node aux = this.raiz;
-        while (aux.getEsquerda().getEsquerda() != null) {
-            aux = aux.getEsquerda();
-        }
+        Node aux = this.getMenorNumero(this.raiz);
 
         int num = aux.getEsquerda().getElemento();
         aux.setEsquerda(null);
         return num;
+    }
+
+    //* Remover em qualquer posição */
+    public void remover(int elemento)throws Exception {
+        this.remover(elemento, this.raiz);
+    }
+
+    private Node remover(int elemento, Node node) throws Exception {
+        if (this.raiz == null) {
+            throw new Exception("A árvore está vazia");
+        } else {
+            // Recursividade
+            if (elemento < node.getElemento()) {
+                node.setEsquerda(this.remover(elemento, node.getEsquerda()));
+            } else if (elemento > node.getElemento()) {
+                node.setDireita(this.remover(elemento, node.getDireita()));
+            // Caso o nó tenha duas sub-árvores
+            } else if (node.getDireita() != null && node.getEsquerda() != null) {
+                node.setElemento(this.getMenorNumero(node.getDireita()).getElemento());
+                node.setDireita(this.getMenorNumero(node.getDireita()).getDireita());
+            // Caso o nó tenha 1 ou 0 sub-árvores
+            } else {
+                node = (node.getEsquerda() != null) ? node.getEsquerda() : node.getDireita();
+            }
+        }
+        return node;
     }
 }

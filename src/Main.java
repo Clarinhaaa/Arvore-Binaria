@@ -9,7 +9,8 @@ public class Main {
         bt.inserir(1);
         bt.inserir(6);
         bt.inserir(5);
-        bt.inserir(7);
+        bt.inserir(8);
+        bt.inserir(0);
 
         //* Imprimir nas três formas */
         bt.preOrder();
@@ -21,10 +22,12 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        //* Pegar o maior e menor número e remover o menor */
+        //* Pegar o maior e menor número */
         System.out.println("Maior número da árvore: " + bt.getMaiorNumero());
         System.out.println("Menor número da árvore: " + bt.getMenorNumero());
-        System.out.println("Menor número da árvore removido: " + bt.removerMenorNumero());
+
+        //* Remover elemento */
+        bt.remover(6);
 
         //* Imprimir depois das mudanças */
         System.out.println();
